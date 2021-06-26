@@ -9,7 +9,8 @@ CREATE TABLE capacitycontroller.stores (
 	phone CHAR(40),
 	max_capacity INT(10),
 	current_capacity INT(10),
-	actual_capacity INT(10)
+	actual_capacity INT(10),
+	bio TEXT(1000)
 ) ENGINE = InnoDB;
 
 CREATE TABLE capacitycontroller.users (

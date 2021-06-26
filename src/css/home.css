@@ -1,0 +1,42 @@
+#photoDiv{
+    background-image: url(../../files/images/storeImage.jpg);
+    background-size: 100% auto;
+    width: 100%;
+    height: auto;
+}
+#photoDiv p{    
+    margin: 0;
+}
+header{
+    height: calc(10vw + 50px);
+    background-color: rgba(255, 255, 255, 0.7);
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    margin: 0;
+}
+#headerLogo{
+    grid-row: 1 / span 2;
+}
+#headerTitle{
+    margin: 0;
+}
+#headerSubtitle{
+    margin: 0;
+}
+article a>p{
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+    font-size: 20px;
+}
+#storesButton{
+    background-color: aquamarine;
+    width: 300px;
+}
+#aboutButton{
+    background-color: lightgrey;
+}
+#contactButton{
+    background-color: lightgrey;
+}
