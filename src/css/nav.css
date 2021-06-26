@@ -1,0 +1,79 @@
+/*Nav Bar*/
+nav { /*Whole Nav bar*/
+    width: 100%;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    min-width: 350px;
+  }
+  div.nav{ /*Whole nav bar*/
+    background-color: rgb(246, 231, 19);
+    overflow: hidden;
+    margin: 0px;
+    border: 6px inset grey;
+  }
+  .navItem{/*Menu Item*/
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    font-size: 36px;
+    height: 36px;
+    background-color: rgb(246, 231, 19);
+    transition-duration: 0.4s;
+  }
+  .icon{/*Menu Icon*/
+    float: left;
+    padding: 12px 15px;
+    text-decoration: none;
+    font-size: 36px;
+    height: 36px;
+    display:none;
+  }
+  .navItem:hover{ /*Menu Items*/
+    background-color: rgb(255, 247, 139);
+    color: grey;
+  }
+  div.nav img { /*Logo and menu img*/
+    width: 36px;
+    height: 36px;
+    float: left;
+  }
+  .navItem p{/*Writing beside image*/
+    float: left;
+    white-space: pre;
+    height: 36px;
+    margin: 0px;
+  }
+  #navHome{/* First Nav item */
+    background-color: white;
+    color: black;
+    transition-duration: 0.4s;
+  }
+  #navHome:hover{/*Hover on first nav item*/
+    color: grey;
+    background-color: rgb(227, 227, 227);
+  }
+  /* Collapse menu */
+  @media screen and (max-width: 400px){
+    div.nav a:not(:first-child) {display: none;}
+    div.nav a.icon{
+      float: right;
+      display: block;
+    }
+    /*Display vertical links*/
+    div.nav.responsive {position: relative;}
+    div.nav.responsive a.icon { /*Hambuger menu icon moves to the top right*/
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    div.nav.responsive a { /*Menu items go vertical*/
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+  

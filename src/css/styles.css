@@ -1,0 +1,30 @@
+/* CSS Document */
+@import url("nav.css");
+@import url("footer.css");
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  font-family: serif;
+}
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  background-color: LightGreen;
+}
+a {
+  text-decoration: none;
+}
+h2 {
+  text-align: center;
+  font-family: didot, serif;
+}
+.var{
+  display: none;
+  visibility:hidden;
+}
