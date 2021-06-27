@@ -13,6 +13,7 @@ This is our code repository for our project submission for Def Hacks Worldwide 3
 
 ## Hardware description
 
+
 ## Website Pages:
 * Home/Landing
 * Sign up/Registration
