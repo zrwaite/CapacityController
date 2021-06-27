@@ -1,42 +1,86 @@
 #photoDiv{
     background-image: url(../../files/images/storeImage.jpg);
-    background-size: 100% auto;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
     width: 100%;
+    background-position: center; 
     height: auto;
 }
 #photoDiv p{    
     margin: 0;
 }
 header{
-    height: calc(10vw + 50px);
-    background-color: rgba(255, 255, 255, 0.7);
+    height: calc(150px);
+    background-color: rgba(0, 0, 0, 0.6);
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 10fr;
     grid-gap: 10px;
     margin: 0;
 }
 #headerLogo{
     grid-row: 1 / span 2;
+    width: calc(30px + 8vw);
+    height: auto;
+    margin: calc(10px + 1vw) 0px calc(10px + 1vw) 30px;
 }
 #headerTitle{
     margin: 0;
+    margin-top: 10px;
+    color: white;
+    font-size: calc(10px + 3vw);
+    text-align: center;
 }
 #headerSubtitle{
     margin: 0;
+    color: white;
+    font-size: calc(5px + 2vw);
+    text-align: center;
+}
+@media screen and (max-width: 630px){
+    header{
+        height: 200px;
+    }
+    #headerTitle{
+        font-size: 40px;
+    }
+    #headerSubtitle{
+        font-size: 25px;
+    }
+}
+article{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 3rem;
+    padding-bottom: 100px;
+}
+article>a:first-child{
+    grid-column: 1 / span 2;
+}
+a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+p{
+    text-align: center;
+    padding: 4px;
 }
 article a>p{
     width: 150px;
     height: auto;
-    border-radius: 5px;
+    border: 3px solid black;
     font-size: 20px;
 }
 #storesButton{
-    background-color: aquamarine;
+    background-color: rgb(74, 215, 95);
     width: 300px;
+    color: black;
 }
 #aboutButton{
     background-color: lightgrey;
+    color: black;
 }
 #contactButton{
     background-color: lightgrey;
+    color: black;
 }

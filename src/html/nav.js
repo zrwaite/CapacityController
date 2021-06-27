@@ -1,7 +1,7 @@
 document.getElementsByTagName("nav")[0].innerHTML = `
   <div class="nav" id="mainNav">
     <a href="home.html" id="navHome" class="navItem">
-      <img class="navLogo" src="files/images/logo.png" style="margin: 0px">
+      <img class="navLogo" src="files/images/logoWhite.png" style="margin: 0px">
       <p id="home"> Home</p>
     </a>
     <a href="stores.html" id="stores" class="navItem">Stores</a>
