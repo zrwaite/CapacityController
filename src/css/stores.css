@@ -1,3 +1,21 @@
+body{
+    background-color: white;
+}
+header{
+    display: grid;
+    grid-template-columns: 1fr 10fr 3fr;
+    padding: 10px;
+}
+
+#headerLogo{
+    margin: 10px;
+    width: 50px;
+    height: auto;
+}
+#title{
+    text-align: left;
+    font-size: 30px;
+}
 #storeInput {
     background-image: url('../../files/images/search.png');
     background-position: 14px 12px;
@@ -7,11 +25,12 @@
     padding: 14px 20px 12px 45px;
     border: none;
     border-bottom: 1px solid #ddd;
+    border: 3px solid grey;
+    max-height: 25px;
 }
-  
-/* The search field when it gets focus/clicked on */
+
 #storeInput:focus {
-    outline: 3px solid #ddd;
+    border: 3px solid black;
 }
 #storeList{
     width: 100%;
@@ -25,9 +44,10 @@
     height: auto;
     min-height: 100px;
     display: grid;
-    grid-template-columns: minmax(120px,1fr) 4fr minmax(150px,1fr);
-    background-color: darkgrey;
+    grid-template-columns: minmax(100px,1fr) 3fr minmax(150px,2fr);
+    background-color: rgb(210, 210, 210);
     gap: 1rem;
+    margin: 20px 0px;
 }
 .title{
     border-right: 3px solid black;
@@ -47,7 +67,7 @@
     padding: 10px;
 }
 .address, .hours, .phone{
-    font-size: 18px;
+    font-size: calc(10px + 1vw);
     margin: 0;
 }
 .capacity{
@@ -67,4 +87,15 @@
 .updateTime{
     color: grey;
     margin: 0;
+}
+@media screen and (max-width: 500px){
+    header{
+        grid-template-columns: 1fr 10fr;
+    }
+    #storeInput{
+        grid-column: 1 / span 2;
+    }
+    .capacity{
+        grid-template-columns: 1fr;
+    }
 }

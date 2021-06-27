@@ -6,6 +6,7 @@ CREATE TABLE capacitycontroller.stores (
     password_hash CHAR(200),
     image_link CHAR(200),
 	store_address CHAR(100),
+	store_hours CHAR(200),
 	phone CHAR(40),
 	max_capacity INT(10),
 	current_capacity INT(10),

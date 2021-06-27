@@ -4,10 +4,33 @@ footer {
     clear: left;
     margin: 0px;
     padding: 10px;
-    border: 0px solid gray;
-    background-color: rgb(200, 200, 200);
+    background-color: rgb(27, 27, 27, 0.6);
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+}
+footer hr{
+    border: 2px solid green;
+    border-radius: 2px;
+    width: 50%;
 }
 footer p {
     vertical-align: middle;
     text-align: center;
+    margin: 0;
+    font-size: 10px;
+}
+footer h3{
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+}
+footer div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#footerLogo{
+    width: 80px;
+    height: auto;
 }
