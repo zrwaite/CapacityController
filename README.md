@@ -27,6 +27,8 @@ When using the sensors, we noticed that inanimate objects wouldn’t be detected
 * About Us
 * Contact Us
 * Stores
+  * <img width="1348" alt="Screen Shot 2021-06-27 at 10 14 53 AM" src="https://user-images.githubusercontent.com/68486874/123547920-b4674180-d730-11eb-9533-587b673ed1a0.png">
+
 
 ## Website Back-end
 
