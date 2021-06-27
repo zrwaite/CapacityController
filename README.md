@@ -40,8 +40,13 @@ Fixing those errors. The back-end can be implemented with a bit more time, allow
 
 ## Hardware description
 Coming up with the components for our capacity counter was one of the most important parts of the project, and thus took a lot of planning. We had initially thought to put the sensors at the sides of a doorway, or on a vertical wood plank, however that would’ve been inconvenient, and hard to move. Therefore we came up with a contractible design, which could fold in on itself, being easier to carry and transfer. On the edge of each foldable board, we added 1 sensor, attached to wires which travel throughout the design to obtain both a power supply, and code from an arduino. The code would input information to a series of 3 coloured lights, all representing the state of the line and grocery store. If no one has entered the store in a while the light will be green (customers are allowed in 1 at a time). If a customer has just entered the store, the light will change to white for 4 seconds (meaning no one can enter), soon changing back to green. Finally, if the store is at maximum capacity, the light will stay red until someone from the store has left (detected by a sensor at the exit door). 
+![IMG_5969](https://user-images.githubusercontent.com/68486874/123549560-ad8ffd00-d737-11eb-8087-cc88830fdd0e.jpeg)
+
 
 When using the sensors, we noticed that inanimate objects wouldn’t be detected at a far range by the sensor, however due to the IR humans give off, we were detectable at distances up to 3 metres, working perfectly for our design. We had also designed antennas for our transmitters/receivers and were able to transfer signals at a distance of 5 metres. 
+
+![IMG_5968](https://user-images.githubusercontent.com/68486874/123549574-b4b70b00-d737-11eb-9ff3-1ae74557ba06.jpeg)
+
 
 ## Website Pages:
 * Home/Landing
