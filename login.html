@@ -12,6 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <link rel="stylesheet" type="text/css" href="src/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/login.css" />
 
     <script src="src/js/jquery-3.6.0.min.js"></script>
     <script>page="login"</script>
@@ -20,8 +21,21 @@
   <body>
     <nav><script type="module" src="src/html/nav.js"></script></nav>
     <div style="height: 65px;"></div>
+    <header>
+      <h2 id="title">
+        CAPACITY CONTROLLER LOGIN:
+      </h2>
+    </header>
     <article>
+      <div id="loginInput">
+        <input type='text' id='username' name='username' maxlength='20' required>
+        <label for='username'>Username</label>
+        <input type='password' id='pword' name='pword' required>
+        <label for='pword'>Password</label>
+      </div>
     </article>
+    <a href="admin.html">Admin</a>
+    <a href="controller.html">Controller</a>
     <footer><script type="module" src="src/html/footer.js"></script></footer>
   </body>
 </html>

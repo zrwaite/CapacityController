@@ -1,0 +1,22 @@
+#title{
+    font-size: 30px;
+    text-align: center;
+}
+article{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#textInput{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#logoInput{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#logoImage{
+    grid-column: 1 / span 2;
+    width: auto;
+    height: auto;
+    max-height: 250px;
+}

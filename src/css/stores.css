@@ -1,0 +1,70 @@
+#storeInput {
+    background-image: url('../../files/images/search.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+  
+/* The search field when it gets focus/clicked on */
+#storeInput:focus {
+    outline: 3px solid #ddd;
+}
+#storeList{
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    box-sizing: border-box;
+}
+.store{
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: minmax(120px,1fr) 4fr minmax(150px,1fr);
+    background-color: darkgrey;
+    gap: 1rem;
+}
+.title{
+    border-right: 3px solid black;
+    padding: 10px;
+}
+.titleLogo{
+    width: 100%;
+    height: auto;
+}
+.titleName{
+    font-size: 20px;
+    margin: 0;
+}
+.description{
+    border-right: 3px solid black;
+    margin: 0;
+    padding: 10px;
+}
+.address, .hours, .phone{
+    font-size: 18px;
+    margin: 0;
+}
+.capacity{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 0;
+    padding: 10px;
+}
+.availability, .fullness{
+    font-size: 30px;
+    margin: 0;
+}
+.updateInfo{
+    margin: 0;
+}
+.updateTime{
+    color: grey;
+    margin: 0;
+}

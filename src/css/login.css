@@ -1,0 +1,16 @@
+#title{
+    font-size: 40px;
+    color: red;
+    text-align: center;
+}
+article{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#loginInput{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 50%;
+    text-align: center;
+}
