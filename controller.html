@@ -12,6 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <link rel="stylesheet" type="text/css" href="src/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="src/css/controller.css" />
 
     <script src="src/js/jquery-3.6.0.min.js"></script>
     <script>page="controller"</script>
@@ -20,7 +21,41 @@
   <body>
     <nav><script type="module" src="src/html/nav.js"></script></nav>
     <div style="height: 65px;"></div>
+    <header>
+      <h2 id="title">
+        TOTAL OCCUPANCY:
+      </h2>
+    </header>
     <article>
+      <div id="controlPanel">
+        <div id="minus">
+          <img id="minusButton" src="files/images/minus.svg">
+          <p>Reduce Store Occupancy</p>
+        </div>
+        <div id="capacity">
+          <h3 id="actualCapacity">
+            40
+          </h3>
+          <p id="currentCapacity">
+            MAX CAPACITY = 50
+          </p>
+          <progress id="capacityGraph" value="40" max="50"> 40% </progress>
+        </div>
+        <div id="plus">
+          <img id="plusButton" src="files/images/plus.svg">
+          <p>Reduce Store Occupancy</p>
+        </div>
+      </div>
+      <div id="capacityInfo">
+        <div id="remaining">
+          <p>Occupants still allowed:</p>
+          <h3 id="remainingCapacity">10</h3>
+        </div>
+        <div id="maxCapacity">
+          <p>Usual Capacity:</p>
+          <h3 id="remainingCapacity">10</h3>
+        </div>
+      </div>
     </article>
     <footer><script type="module" src="src/html/footer.js"></script></footer>
   </body>

@@ -1,0 +1,58 @@
+#title{
+    font-size: 40px;
+    text-align: center;
+    color: red;
+}
+article{
+    padding: 10px;
+}
+#controlPanel{
+    background-color: rgba(200, 200, 200, 0.7);
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#minus, #plus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#minusButton, #plusButton{
+    width: 100px;
+    height: 100px;
+}
+#capacity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#actualCapacity{
+    margin: 0;
+    font-size: 100px;
+}
+#currentCapacity{
+    font-size: 20px;
+}
+#capacityGraph{
+    /*width: 50%;*/
+}
+#capacityInfo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    border-top: 3px solid black;
+}
+#remaining{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#maxCapacity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

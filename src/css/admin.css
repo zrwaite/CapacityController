@@ -1,0 +1,28 @@
+#title{
+    text-align: center;
+    color: red;
+}
+#editor{
+    margin: 10px;
+    padding: 10px;
+    background-color: lightsteelblue;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+#storeInfo{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-right: 3px solid black;
+}
+#users{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#createUser{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 50%;
+    text-align: center;
+}

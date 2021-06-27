@@ -12,7 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
     <link rel="stylesheet" type="text/css" href="src/css/styles.css" />
-
+    <link rel="stylesheet" type="text/css" href="src/css/admin.css" />
     <script src="src/js/jquery-3.6.0.min.js"></script>
     <script>page="admin"</script>
     <script src="src/js/nav.js"></script>
@@ -20,7 +20,45 @@
   <body>
     <nav><script type="module" src="src/html/nav.js"></script></nav>
     <div style="height: 65px;"></div>
+    <header>
+      <h2 id="title">
+        ADMIN ACCOUNT EDITING
+      </h2>
+    </header>
     <article>
+      <div id="editor">
+        <div id="storeInfo">
+          <label for='bname'>Business Name:</label> 
+          <input type='text' id='fname' name='fname' maxlength='80'>
+          <label for='phone'>Phone Number:</label>
+          <input type='text' id='phone' name='phone' maxlength='20'>
+          <label for='hours'>Hours:</label>
+          <input type='text' id='hours' name='hours' maxlength='200'>
+          <label for='address'>Address:</label>
+          <input type='text' id='address' name='address' maxlength='80'>
+          <label for='maxCap'>Maximum Capacity:</label>
+          <input type='number' id='maxCap' name='maxCap'>
+          <label for='currCap'>Covid Capacity:</label>
+          <input type='number' id='currCap' name='currCap'>
+        </div>
+        <div id="users">
+          <h4 id="usersTitle">
+            <em>Current Users:</em>
+          </h4>
+          <div id="userList">
+
+          </div>
+          <h4 id="createTitle">
+            <em>Create new account:</em>
+          </h4>
+          <div id="createUser">
+            <input type='text' id='username' name='username' maxlength='20' required>
+            <label for='username'>Username</label>
+            <input type='password' id='pword' name='pword' required>
+            <label for='pword'>Password</label>
+          </div>
+        </div>
+      </div>
     </article>
     <footer><script type="module" src="src/html/footer.js"></script></footer>
   </body>
