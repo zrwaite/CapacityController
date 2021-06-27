@@ -6,7 +6,7 @@ $dbname = "capacitycontroller";
 $conn = mysqli_connect($servername, $username, $password, $dbname); //Connect to database
 if($conn->connect_error) {die("Connection failed: " . $conn->connect_error);} //If connection fails
 
-$sql = "SELECT business_name, email, image_link, store_address, phone, max_capacity, current_capacity, actual_capacity, bio FROM stores;";
+$sql = "SELECT business_name, email, image_link, store_hours, store_address, phone, max_capacity, current_capacity, actual_capacity, bio FROM stores;";
 $result = mysqli_query($conn, $sql);
 $rows=array();
 if (mysqli_num_rows($result) > 0) {
