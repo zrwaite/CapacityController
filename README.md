@@ -12,6 +12,31 @@ While identifying covid-related issues in our community, one problem that came t
 
 The project consisted of many ups and downs, and a lot of things came unexpectedly. A lot of our technology was limited due to covid/budgeting, some of our equipment was malfunctioning, and there were some problems that we were not quite able to solve in the given time frame.
 
+## Inspiration
+Several of our group members work in grocery stores, and all of us have seen the impact of COVID with how consumers interact with businesses. Being able to find a less crowded location is important, and this seemed like a simple yet scalable way to make a difference
+## What it does
+Our product allows business to keep track of the capacity in their store with a manual clicker system on a phone or computer, or even allows the process to be automated with our scanner hardware that tells when someone enters a door. 
+## How we built it
+The hardware was built with IR scanners, plywood, wiring, arduinos, power supply, LEDs, etc. Our system lies flat for storage and shipping, then folds out to allow a passage way for people to walk through. The sensors send wired signals to the arduino, which reads this information, parses it, and determines if a signal needs to be sent. 
+The software was not able to be fully implanted in the time frame, but it takes requests to the server from businesses to update their status. An admin page also allows for edits to things like address, and the max capacity. Businesses can keep track of how many people are in their store between all of their workers, but an even larger benefit is to customers. The data about capacity will be publicly available, meaning that you can see how busy stores in your area are before you go there. Stores that are very busy can't accept more people anyways, so it isn't a detriment to them. Stores that aren't busy, especially small business, can benefit from people being assured about their safe experience. 
+## Challenges we ran into
+- Radio signal stopped working
+- Losing track of wires through pipes etc
+- Raspberry pi server wasn't working
+- Couldn't read GPIO data
+- Timeframe
+- SQL SELECT with prepared statements was not working, so registration was not implemented on time
+- Tiredness
+- Team members getting distracted
+- Blew out dozens of LEDs
+- Front-end was hard to implement without any libraries
+## Accomplishments that we're proud of
+The sensor system with the arduino was able to easily parse data about when people walked through, because people give off more IR then objects, so rolling a cart through would not be detected as another person. 
+The front-end design was very good. We were not able to implement all of it, but it was very nice looking.
+## What we learned
+Certain team members learned more than others, but we learned a lot about raspberry pi and arduino, implementing front-end systems and back-end code, sql query and javascript with query. We also learned about soldering and hardware components in our assembly process. 
+## What's next for Capacity Controller
+Fixing those errors. The back-end can be implemented with a bit more time, allowing businesses to add their information and add users to control input and output data. We can then add the raspberry pi data directly to the server using GPIO. 
 
 ## Hardware description
 Coming up with the components for our capacity counter was one of the most important parts of the project, and thus took a lot of planning. We had initially thought to put the sensors at the sides of a doorway, or on a vertical wood plank, however that would’ve been inconvenient, and hard to move. Therefore we came up with a contractible design, which could fold in on itself, being easier to carry and transfer. On the edge of each foldable board, we added 1 sensor, attached to wires which travel throughout the design to obtain both a power supply, and code from an arduino. The code would input information to a series of 3 coloured lights, all representing the state of the line and grocery store. If no one has entered the store in a while the light will be green (customers are allowed in 1 at a time). If a customer has just entered the store, the light will change to white for 4 seconds (meaning no one can enter), soon changing back to green. Finally, if the store is at maximum capacity, the light will stay red until someone from the store has left (detected by a sensor at the exit door). 
