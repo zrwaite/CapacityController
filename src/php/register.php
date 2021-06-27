@@ -41,7 +41,7 @@ if (!empty($_POST) && $_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->connect_error) {die("Error: " . $conn->connect_error);}
     if (!check_username($new->username, $conn)){array_push($errors,"username");}
     if (!$errors){
-
+/*
         $info = pathinfo($_FILES['image']['name']);
         $ext = $info['extension']; // get the extension of the file
         $newname = $new->bname."Logo.".$ext; 
@@ -54,11 +54,29 @@ if (!empty($_POST) && $_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode('nope');
         }
         
+        */
 
         $stmt = $conn->prepare("INSERT INTO stores (business_name, admin_username, password_hash, store_address, email) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $new->bname, $new->username, $new->hash, $new->address, $new->email);
         $stmt->execute(); 
         echo json_encode("Stores");
+
+        $sql = "SELECT id FROM stores;"; //WHERE username = '$new->username';
+        $result = mysqli_query($conn, $sql);
+        $rows=array();
+        echo "hello".$result;
+        /*
+        echo mysqli_num_rows($result);
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                array_push($rows, $row);  
+            }
+            echo json_encode($rows);
+        } else {
+            echo json_encode("0");
+        }
+        */
 
         $stmt = $conn->prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
         $stmt->bind_param("ss", $new->username, $new->hash);

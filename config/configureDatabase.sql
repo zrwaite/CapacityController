@@ -18,5 +18,5 @@ CREATE TABLE capacitycontroller.users (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username CHAR(30) NOT NULL,
     password_hash CHAR(200),
-	store_id int FOREIGN KEY REFERENCES stores(id)
+	store_id int
 ) ENGINE = InnoDB;
