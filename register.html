@@ -20,35 +20,44 @@
   </head>
   <body>
     <nav><script type="module" src="src/html/nav.js"></script></nav>
-    <div style="height: 65px;"></div>
-    <header>
-      <h2 id="title">Capacity Controller Account Registration</h2>
-    </header>
-    <article>
-      <div id="textInput">
-        <label for='bname'>Business Name:</label>
-        <input type='text' id='fname' name='fname' maxlength='80' required>
-        <label for='username'>Admin Username:</label>
-        <input type='text' id='username' name='username' maxlength='20' required>
-        <label for='pword'>Password</label>
-        <input type='password' id='pword' name='pword' required>
-        <label for='pword2'>Confirm password:</label>
-        <input type='password' id='pword2' name='pword2' required>
-        <label for='address'>Address:</label>
-        <input type='text' id='address' name='address' maxlength='80' required>
-      </div>
-      <div id="logoInput">
-        <label for='image'>Upload Logo:</label>
-        <input type="file" id="image" name="image" accept="image/*">
-        <img id="logoImage" src="#" alt="Your Logo" />
-      </div>
-      <script>
-        image.onchange = evt => {
-        const [file] = image.files
-        if (file) {logoImage.src = URL.createObjectURL(file)}
-        } 
-      </script>
-    </article>
+    <div style="height: 72px;"></div>
+    <div id="imageBackground">
+        <main>
+        <header>
+          <h2 id="title">Capacity Controller Account Registration</h2>
+        </header>
+        <article>
+          <div id="registrationContainer">
+            <div id="textInput">
+              <label for='bname'>Business Name:</label>
+              <input type='text' id='fname' name='fname' maxlength='80' required>
+              <label for='username'>Admin Username:</label>
+              <input type='text' id='username' name='username' maxlength='20' required>
+              <label for='pword'>Password</label>
+              <input type='password' id='pword' name='pword' required>
+              <label for='pword2'>Confirm password:</label>
+              <input type='password' id='pword2' name='pword2' required>
+              <label for='address'>Address:</label>
+              <input type='text' id='address' name='address' maxlength='80' required>
+              <label for='email'>Email:</label>
+              <input type='email' id='email' name='email' maxlength='80' required>
+            </div>
+            <div id="logoInput">
+              <label for='image'>Upload Logo:</label>
+              <input type="file" id="image" name="image" accept="image/*">
+              <img id="logoImage" src="#" alt="Your Logo:" />
+            </div>
+            <script>
+              image.onchange = evt => {
+              const [file] = image.files
+              if (file) {logoImage.src = URL.createObjectURL(file)}
+              } 
+
+            </script>
+          </div>
+        </article>
+      </main>
+    </div>
     <footer><script type="module" src="src/html/footer.js"></script></footer>
   </body>
 </html>

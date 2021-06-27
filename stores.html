@@ -16,35 +16,19 @@
 
     <script src="src/js/jquery-3.6.0.min.js"></script>
     <script>page="stores"</script>
+    <script src="src/js/getStores.js"></script>
     <script src="src/js/nav.js"></script>
   </head>
   <body>
     <nav><script type="module" src="src/html/nav.js"></script></nav>
-    <div style="height: 65px;"></div>
+    <div style="height: 72px;"></div>
     <header>
-      <img id="headerLogo" src="files/images/logo.png">
-      <h2>Capacity Controller</h2>
+      <img id="headerLogo" src="files/images/logoBlack.png">
+      <h2 id="title">Capacity Controller</h2>
       <input type="text" placeholder="Search.." id="storeInput" onkeyup="filterFunction()">
     </header>
     <article>
       <div id="storeList">
-        <div class="store">
-          <div class="title">
-            <img class="titleLogo" src="files/images/metroLogo.png">
-            <h3 class="titleName">Metro Inc.</h3>
-          </div>
-          <div class="description">
-            <p class="address">70 Front Street</p>
-            <p class="hours">7am-10pm</p>
-            <p class="phone">(705)-325-6789</p>
-          </div>
-          <div class="capacity">
-            <h4 class="availability">28%</h4>
-            <h4 class="fullness">14%</h4>
-            <p class="updateInfo">Last updated:</p>
-            <p class="updateTime">1 min ago</p>
-          </div>
-        </div>
       </div>
     </article>
     <footer><script type="module" src="src/html/footer.js"></script></footer>
