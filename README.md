@@ -12,7 +12,7 @@ This is our code repository for our project submission for Def Hacks Worldwide 3
 **ADD STUFF**
 
 ## Hardware description
-![image](https://user-images.githubusercontent.com/86500789/123536219-0a1ef800-d6f7-11eb-81fb-f9b356dff476.png)
+
 
 ## Website Pages:
 * Home/Landing
