@@ -20,17 +20,26 @@ When using the sensors, we noticed that inanimate objects wouldn’t be detected
 
 ## Website Pages:
 * Home/Landing
+<img width="685" alt="home" src="https://user-images.githubusercontent.com/68486874/123548027-20e24080-d731-11eb-9a33-ca742f109fcc.png">
 * Sign up/Registration
+<img width="967" alt="registration" src="https://user-images.githubusercontent.com/68486874/123548034-2b043f00-d731-11eb-986f-89791dc93958.png">
 * Log in
+<img width="961" alt="login" src="https://user-images.githubusercontent.com/68486874/123548038-2e97c600-d731-11eb-8949-90102d7df819.png">
 * Admin Page
+<img width="1270" alt="admin" src="https://user-images.githubusercontent.com/68486874/123548044-322b4d00-d731-11eb-8ee8-68a52dfb0052.png">
 * Controller Page
+<img width="1264" alt="controller" src="https://user-images.githubusercontent.com/68486874/123548048-35bed400-d731-11eb-9bdc-8cb9289b0513.png">
 * About Us
-* Contact Us
+<img width="1269" alt="about" src="https://user-images.githubusercontent.com/68486874/123548052-39eaf180-d731-11eb-93f2-c895ca471570.png">
 * Stores
   * <img width="1348" alt="Screen Shot 2021-06-27 at 10 14 53 AM" src="https://user-images.githubusercontent.com/68486874/123547920-b4674180-d730-11eb-9533-587b673ed1a0.png">
+* Contact Us
 
 
-## Website Back-end
+## Website
+<img width="1483" alt="code" src="https://user-images.githubusercontent.com/68486874/123548073-4e2eee80-d731-11eb-8e9f-3b3dd827019e.png">
+
+Due to time constraints, we were not able to implement many of the features we planned to. 
 
 ### Account creation
 * Takes registration information, adds to table
