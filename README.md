@@ -37,9 +37,11 @@ When using the sensors, we noticed that inanimate objects wouldn’t be detected
 
 
 ## Website
+All of the code is written from scratch. The only library used is JQuery, the entire site is written in pure HTML, CSS, Javascript and PHP, with nothing written before the start of the time. 
+
 <img width="1483" alt="code" src="https://user-images.githubusercontent.com/68486874/123548073-4e2eee80-d731-11eb-8e9f-3b3dd827019e.png">
 
-Due to time constraints, we were not able to implement many of the features we planned to. 
+Due to time constraints, we were not able to implement many of the features we planned to. Sign in and registration for business customers was not implemented in time, due to some issues with mysqli. The admin and controller pages therefore were not able to have back-end implemented in time. 
 
 ### Account creation
 * Takes registration information, adds to table
