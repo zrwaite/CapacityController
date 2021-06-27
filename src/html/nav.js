@@ -7,8 +7,10 @@ document.getElementsByTagName("nav")[0].innerHTML = `
     <a href="stores.html" id="stores" class="navItem">Stores</a>
     <a href="register.html" id="register" class="navItem">Register</a>
     <a href="login.html" id="login" class="navItem">Login</a>
-    <a href="about.html" id="about" class="navItem">About Us</a>
-    <a href="contact.html" id="contact" class="navItem">Contact Us</a>
+    <a href="about.html" id="about" class="navItem">About</a>
+    <a href="contact.html" id="contact" class="navItem">Contact</a>
+    <a href="controller.html" id="controller" class="navItem">Controller</a>
+    <a href="admin.html" id="admin" class="navItem">Admin</a>
     <a href="javascript:void(0);" class="icon">
       <img class="navMenu" src="files/images/menu.svg">
     </a>
