@@ -1,4 +1,4 @@
-#photoDiv{
+main{
     background-image: url(../../files/images/storeImage.jpg);
     background-size: auto 100%;
     background-repeat: no-repeat;
@@ -6,7 +6,7 @@
     background-position: center; 
     height: auto;
 }
-#photoDiv p{    
+main p{    
     margin: 0;
 }
 header{

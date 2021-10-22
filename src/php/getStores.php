@@ -1,24 +1,31 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "capacitycontroller";
-$conn = mysqli_connect($servername, $username, $password, $dbname); //Connect to database
-if($conn->connect_error) {die("Connection failed: " . $conn->connect_error);} //If connection fails
 
-$sql = "SELECT business_name, email, image_link, store_hours, store_address, phone, max_capacity, current_capacity, actual_capacity, bio FROM stores;";
-$result = mysqli_query($conn, $sql);
-$rows=array();
-if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
-        array_push($rows, $row);  
+//Creates object for response
+include 'response.php';
+$res = new Response;
+
+//Allows for connection to server
+include 'database.php';
+if($conn->connect_error) {
+    array_push($res->errors, $conn->connect_error);
+} 
+
+else{
+    //Connected to database
+    $res->connected = true;
+    $sql = "SELECT business_name, email, image_link, store_hours, store_address, phone, max_capacity, current_capacity, actual_capacity, bio FROM stores;";
+    //Result of sql query
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {//If there is data
+        while($row = mysqli_fetch_assoc($result)) { //Go through each row
+            array_push($res->objects, $row);  //Add data to array
+        }
+        $res->success = true; //Successful
     }
-    echo json_encode($rows);
-} else {
-    echo json_encode("0");
 }
-
-//$sql = "SELECT * FROM Orders LIMIT 15, 10"; //Return 16-25
+echo json_encode($res);
 $conn->close();
+
+//Code for controller which stores are pulled in long list 
+//$sql = "SELECT * FROM Orders LIMIT 15, 10"; //Return 16-25
 ?>

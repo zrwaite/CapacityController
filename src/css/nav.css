@@ -2,7 +2,7 @@
 nav { /*Whole Nav bar*/
     width: 100%;
     z-index: 1000;
-    position: fixed;
+    position: sticky; /*fixed while taking up space*/
     top: 0;
     min-width: 350px;
   }

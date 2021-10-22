@@ -1,10 +1,15 @@
+function storeClick (clickObject) {
+    console.log(clickObject);
+    let index = clickObject.id.replace("store","");
+    console.log(stores[index]);
+}
+var stores;
 $(document).ready(function(){
     var pullInfo = new XMLHttpRequest();
     pullInfo.onload = function() {
-        var stores = JSON.parse(this.responseText);
+        stores = JSON.parse(this.responseText).objects;
         var storeList = document.getElementById("storeList");
         for (i=0; i<stores.length; i++){
-            
             var titleLogo = document.createElement("img");
             titleLogo.src = 'files/images/'+stores[i]['image_link'];
             titleLogo.className = "titleLogo";
@@ -54,10 +59,12 @@ $(document).ready(function(){
             capacity.appendChild(updateTime);
             var store = document.createElement("div");
             store.className = "store";
+            store.id = "store"+i;
+            $('#'+store.id).data("index", i);
             store.appendChild(title);
             store.appendChild(description);
             store.appendChild(capacity);
-
+            store.setAttribute('onclick',  'storeClick(this);');
             storeList.appendChild(store);
             
         }
