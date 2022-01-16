@@ -62,6 +62,6 @@ $(document).ready(function(){
             
         }
     };
-    pullInfo.open("get", "src/php/getStores.php", true);
+    pullInfo.open("get", "src/php/getStore.php", true);
     pullInfo.send();
 });
