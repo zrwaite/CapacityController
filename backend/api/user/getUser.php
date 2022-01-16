@@ -48,4 +48,5 @@ if (count($res->errors) == 0) {
         }
     } else array_push($res->errors, "Missing username or store_id query, or did you mean for a non-GET request?");
 }
+http_response_code($res->status);
 echo json_encode($res);

@@ -6,9 +6,16 @@ const storeTarget = [
     "bools" => []
 ];
 
+const userTarget = [
+    "strings" => ["username"],
+    "ints" => ["id", "store_id"],
+    "bools" => []
+];
+
 function getParseResult(array $result, string $type): bool|array
 {
     if ($type=="store") $target = storeTarget;
+    else if ($type=="user") $target = userTarget;
     else return false;
     $resArray = [];
     foreach($target['strings'] as $elem) $resArray[$elem] = $result[$elem];
