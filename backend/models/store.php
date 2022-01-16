@@ -67,26 +67,9 @@ class PutStore
     }
 }
 
-class GetStore
-{
-    public int $id, $max_capacity, $num_shoppers, $actual_capacity;
-    public string $business_name;
-    public string|null $store_address, $store_hours, $phone, $bio, $image_link, $public_email;
-    public function parseResult(array $result): bool|array
-    {
-        if (!$result) return false;
-        if (!boolval($result['id'])) return false;
-        $this->id = intval($result['id']);
-        $this->max_capacity = intval($result['max_capacity']);
-        $this->num_shoppers = intval($result['num_shoppers']);
-        $this->actual_capacity = intval($result['actual_capacity']);
-        $this->business_name = $result['business_name'];
-        $this->public_email = $result['public_email'];
-        $this->image_link = $result['image_link'];
-        $this->store_address = $result['store_address'];
-        $this->store_hours = $result['store_hours'];
-        $this->phone = $result['phone'];
-        $this->bio = $result['bio'];
-        return true;
-    }
-}
+//class GetStore
+//{
+//    public int $id, $max_capacity, $num_shoppers, $actual_capacity;
+//    public string $business_name;
+//    public string|null $store_address, $store_hours, $phone, $bio, $image_link, $public_email;
+//}

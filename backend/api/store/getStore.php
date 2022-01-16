@@ -18,18 +18,17 @@ $dotenv->load(__DIR__ . "/../../modules/env/.env");
 $res = new Response();
 $res->request_type = "GET";
 
-$store = new GetStore();
-
 $id = getQuery("id");
 $page = getQuery("page");
 if (count($res->errors) == 0) {
     $query = "id, business_name, public_email, image_link, store_address, store_hours, phone, max_capacity, num_shoppers, actual_capacity, bio";
     if ($id) {
         $result = DB::queryFirstRow("SELECT " . $query . " FROM stores WHERE id=%s LIMIT 1", $id);
-        if ($result && $store->parseResult($result)) {
+        $parsedResult = getParseResult($result, "store");
+        if ($result && $parsedResult) {
             $res->status = 200;
             $res->success = true;
-            $res->objects = $store;
+            $res->objects = $parsedResult;
         } else {
             $res->status = 404;
             array_push($res->errors, "Store not found");
@@ -39,7 +38,7 @@ if (count($res->errors) == 0) {
         if ($result) {
             $res->objects = [];
             foreach ($result as $element) {
-                array_push($res->objects, parseResult($element, "store"));
+                array_push($res->objects, getParseResult($element, "store"));
             }
             $res->status = 200;
             $res->success = true;
