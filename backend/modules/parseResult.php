@@ -1,7 +1,7 @@
 <?php
 
 const storeTarget = [
-    "strings" => ["business_name", "image_link", "store_address", "store_hours", "phone", "public_email", "bio"],
+    "strings" => ["name", "image_link", "address", "hours", "phone", "public_email", "bio"],
     "ints" => ["id", "max_capacity", "num_shoppers", "actual_capacity"],
     "bools" => []
 ];

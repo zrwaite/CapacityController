@@ -24,7 +24,7 @@ if (count($res->errors) == 0) {
     $query = "id, username, store_id";
     if ($username) {
         $result = DB::queryFirstRow("SELECT " . $query . " FROM users WHERE username=%s LIMIT 1", $username);
-        $parsedResult = getParseResult($result, "user");
+        if ($result) $parsedResult = getParseResult($result, "user");
         if ($result && $parsedResult) {
             $res->status = 200;
             $res->success = true;

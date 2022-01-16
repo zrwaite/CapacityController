@@ -21,10 +21,10 @@ $res->request_type = "GET";
 $id = getQuery("id");
 $page = getQuery("page");
 if (count($res->errors) == 0) {
-    $query = "id, business_name, public_email, image_link, store_address, store_hours, phone, max_capacity, num_shoppers, actual_capacity, bio";
+    $query = "id, name, public_email, image_link, address, hours, phone, max_capacity, num_shoppers, actual_capacity, bio";
     if ($id) {
         $result = DB::queryFirstRow("SELECT " . $query . " FROM stores WHERE id=%s LIMIT 1", $id);
-        $parsedResult = getParseResult($result, "store");
+        if ($result) $parsedResult = getParseResult($result, "user");
         if ($result && $parsedResult) {
             $res->status = 200;
             $res->success = true;
