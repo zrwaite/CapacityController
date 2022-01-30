@@ -18,13 +18,14 @@ $dotenv->load(__DIR__ . "/../../modules/env/.env");
 $res = new Response();
 $res->request_type = "GET";
 
-$id = getQuery("id");
-$page = getQuery("page");
+$getId = getQuery("id");
+$getPage = getQuery("page");
 if (count($res->errors) == 0) {
     $query = "id, name, public_email, image_link, address, hours, phone, max_capacity, num_shoppers, actual_capacity, bio";
-    if ($id) {
+    if ($getId["set"]) {
+        $id = $getId["value"];
         $result = DB::queryFirstRow("SELECT " . $query . " FROM stores WHERE id=%s LIMIT 1", $id);
-        if ($result) $parsedResult = getParseResult($result, "user");
+        if ($result) $parsedResult = getParseResult($result, "store");
         if ($result && $parsedResult) {
             $res->status = 200;
             $res->success = true;
@@ -33,7 +34,8 @@ if (count($res->errors) == 0) {
             $res->status = 404;
             array_push($res->errors, "Store not found");
         }
-    } else if ($page) {
+    } else if ($getPage["set"]) {
+        $page = $getPage["value"];
         $result = DB::query("SELECT " . $query . " FROM stores LIMIT 10 OFFSET %d", ($page-1)*10);
         if ($result) {
             $res->objects = [];
@@ -46,7 +48,7 @@ if (count($res->errors) == 0) {
             $res->status = 404;
             array_push($res->errors, "store page ".$page." not found");
         }
-    } else  array_push($res->errors, "Missing id or page query, or did you mean for a non-GET request?");
+    } else array_push($res->errors, "Missing id or page query, or did you mean for a non-GET request?");
 }
 http_response_code($res->status);
 echo json_encode($res);

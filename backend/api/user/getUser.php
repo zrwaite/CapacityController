@@ -18,11 +18,12 @@ $dotenv->load(__DIR__ . "/../../modules/env/.env");
 $res = new Response();
 $res->request_type = "GET";
 
-$username = getQuery("username");
-$storeId = getQuery("store_id");
+$getUsername = getQuery("username");
+$getStoreId = getQuery("store_id");
 if (count($res->errors) == 0) {
     $query = "id, username, store_id";
-    if ($username) {
+    if ($getUsername["set"]) {
+        $username = $getUsername["value"];
         $result = DB::queryFirstRow("SELECT " . $query . " FROM users WHERE username=%s LIMIT 1", $username);
         if ($result) $parsedResult = getParseResult($result, "user");
         if ($result && $parsedResult) {
@@ -33,9 +34,10 @@ if (count($res->errors) == 0) {
             $res->status = 404;
             array_push($res->errors, "User not found");
         }
-    } else if ($storeId) {
+    } else if ($getStoreId["set"]) {
+        $storeId = $getStoreId["value"];
         $result = DB::query("SELECT " . $query . " FROM users WHERE store_id=%s", $storeId);
-        if ($result) {
+        if ($result!=false) {
             $res->objects = [];
             foreach ($result as $element) {
                 array_push($res->objects, getParseResult($element, "user"));
