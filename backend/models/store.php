@@ -12,22 +12,9 @@ require_once __DIR__ . "/../modules/mailer.php";
 
 class PostStore
 { //Class for json response
-    public string $admin_email = "", $public_email = "";
-    public string $business_name;
-    public int $admin_id;
-
-    public function __construct(){}
-
-    public function checkEmails(): array
-    {
-        $errors = array();
-        $emails = [$this->admin_email, $this->public_email];
-        foreach($emails as $email) {
-            if (!checkEmail($email)) array_push($errors, $email." is not valid");
-        }
-        return $errors;
-    }
-
+    public string $name;
+    public int $max_capacity, $num_shoppers, $actual_capacity;
+    public int $admin_username;
     #[ArrayShape(["request" => "mixed", "token" => "string"])] //Dev Array shape implementation
     public function createResponse(): array
     {

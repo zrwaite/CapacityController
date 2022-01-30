@@ -8,21 +8,29 @@ use JetBrains\PhpStorm\ArrayShape;
 require_once __DIR__ . "/../modules/checkers.php";
 require_once __DIR__ . "/../auth/tokens.php";
 require_once __DIR__ . "/../modules/mailer.php";
+require_once __DIR__ . "/user.php";
 
 
-class PostUser
+class PostAdmin extends PostUser
 { //Class for json response
-    public string $username, $password, $password_hash;
-    public int $store_id;
+    public int $confirmation_code;
+    public string $email;
 
-    public function checkPassword(): array
+    public function __construct()
     {
-        return checkPassword($this->password);
+        $this->createConfirmationCode();
     }
 
-    public function createHash()
+    public function createConfirmationCode()
     {
-        $this->password_hash = password_hash($this->password, PASSWORD_DEFAULT);
+        $chars = 6;
+        $data = '123456789';
+        $this->confirmation_code = intval(substr(str_shuffle($data), 0, $chars));
+    }
+
+    public function checkEmail(): bool
+    {
+        return checkEmail($this->email);
     }
 
     #[ArrayShape(["request" => "mixed", "token" => "string"])] //Dev Array shape implementation
@@ -32,13 +40,6 @@ class PostUser
             "request" => json_decode(file_get_contents('php://input'), true),
             "token" => $this->createSetToken()
         ];
-    }
-
-    public function createSetToken(): string
-    {
-        $token = createToken(new tokenBody($this->username));
-        setcookie("token", $token, time() + (86400 * 30), "/");
-        return $token;
     }
 }
 
