@@ -14,6 +14,12 @@ class PostUser
 { //Class for json response
     public string $username, $password, $password_hash;
     public int $store_id;
+    public bool $admin;
+
+    public function __construct()
+    {
+        $this->admin = false;
+    }
 
     public function checkPassword(): array
     {

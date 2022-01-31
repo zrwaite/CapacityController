@@ -19,14 +19,7 @@ CREATE TABLE capacity_controller.users (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     username CHAR(30) NOT NULL,
     password_hash CHAR(200),
-	store_id int,
-    FOREIGN KEY (store_id) REFERENCES stores (id)
-) ENGINE = InnoDB;
-
-CREATE TABLE capacity_controller.admins (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    username CHAR(30) NOT NULL,
-    password_hash CHAR(200),
+    admin boolean,
     email CHAR(40),
     store_id int,
     FOREIGN KEY (store_id) REFERENCES stores (id)

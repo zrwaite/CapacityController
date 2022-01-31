@@ -18,6 +18,8 @@ class PostAdmin extends PostUser
 
     public function __construct()
     {
+        parent::__construct();
+        $this->admin = false;
         $this->createConfirmationCode();
     }
 
@@ -31,15 +33,6 @@ class PostAdmin extends PostUser
     public function checkEmail(): bool
     {
         return checkEmail($this->email);
-    }
-
-    #[ArrayShape(["request" => "mixed", "token" => "string"])] //Dev Array shape implementation
-    public function createResponse(): array
-    {
-        return [
-            "request" => json_decode(file_get_contents('php://input'), true),
-            "token" => $this->createSetToken()
-        ];
     }
 }
 
