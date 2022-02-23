@@ -1,5 +1,4 @@
 <?php
-
 const storeTarget = [
     "strings" => ["name", "image_link", "address", "hours", "phone", "public_email", "bio"],
     "ints" => ["id", "max_capacity", "num_shoppers", "actual_capacity"],
@@ -22,4 +21,14 @@ function getParseResult(array $result, string $type): bool|array
     foreach($target['ints'] as $elem) $resArray[$elem] = intval($result[$elem]);
     foreach($target['bools'] as $elem) $resArray[$elem] = boolval($result[$elem]);
     return $resArray;
+}
+
+function removeNullFromArray(array $unparsedArray): array {
+    $parsedArray = $unparsedArray;
+    foreach($unparsedArray as $key => $value){
+        if (is_null($value)){
+            unset($parsedArray[$key]);
+        }
+    }
+    return $parsedArray;
 }
