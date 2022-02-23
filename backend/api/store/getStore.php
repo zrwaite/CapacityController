@@ -18,12 +18,11 @@ $dotenv->load(__DIR__ . "/../../modules/env/.env");
 $res = new Response();
 $res->request_type = "GET";
 
-$getId = getQuery("id");
-$getPage = getQuery("page");
+$id = getQuery("id");
+$page = getQuery("page");
 if (count($res->errors) == 0) {
     $query = "id, name, public_email, image_link, address, hours, phone, max_capacity, num_shoppers, actual_capacity, bio";
-    if ($getId["set"]) {
-        $id = $getId["value"];
+    if (!is_null($id)) {
         $result = DB::queryFirstRow("SELECT " . $query . " FROM stores WHERE id=%s LIMIT 1", $id);
         if ($result) $parsedResult = getParseResult($result, "store");
         if ($result && $parsedResult) {
@@ -34,8 +33,7 @@ if (count($res->errors) == 0) {
             $res->status = 404;
             array_push($res->errors, "Store not found");
         }
-    } else if ($getPage["set"]) {
-        $page = $getPage["value"];
+    } else if (!is_null($page)) {
         $result = DB::query("SELECT " . $query . " FROM stores LIMIT 10 OFFSET %d", ($page-1)*10);
         if ($result) {
             $res->objects = [];

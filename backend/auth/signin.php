@@ -13,8 +13,9 @@ $res = new Response();
 
 $username = getBody("username");
 $password = getBody("password");
-if (!$username) array_push($res->errors, "missing username query");
-if (!$password) array_push($res->errors, "missing password query");
+if (is_null($username)) array_push($res->errors, "missing username query");
+if (is_null($password)) array_push($res->errors, "missing password query");
+
 if (count($res->errors) == 0) {
     $query = "id, password_hash";
     $result = DB::queryFirstRow("SELECT " . $query . " FROM users WHERE username=%s LIMIT 1", $username);

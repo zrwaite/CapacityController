@@ -13,12 +13,10 @@ $res = new Response();
 $res->request_type = $_SERVER["REQUEST_METHOD"];
 if ($res->request_type != "POST") array_push($res->errors, "Must be POST request");
 
-$getEmail = getQuery("email");
-$getCode = getBody("confirmation_code");
-if ($getEmail["set"]) array_push($res->errors, "missing email query");
-if (!$getCode["value"]) array_push($res->errors, "missing confirmation_code in body");
-$email = $getEmail["value"];
-$code = $getCode["value"];
+$email = getQuery("email");
+$code = getBody("confirmation_code");
+if (is_null($email)) array_push($res->errors, "missing email query");
+if (is_null($code)) array_push($res->errors, "missing confirmation_code in body");
 if (count($res->errors) == 0) {
     $query = "id, confirmation_code";
     $teacherResult = DB::queryFirstRow("SELECT " . $query . " FROM ssys22_teachers WHERE email=%sLIMIT 1", $email);

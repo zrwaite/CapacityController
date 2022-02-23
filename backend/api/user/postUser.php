@@ -19,46 +19,35 @@ $dotenv->load(__DIR__ . "/../../modules/env/.env");
 $res = new Response();
 $res->request_type = "POST";
 
-$getAdmin = getBody("admin");
-if ($getAdmin["set"]) {
-    if ($getAdmin["value"]) $user = new PostAdmin();
-    else $user = new PostUser();
-}
-else {
+$admin = getBody("admin");
+if (is_null($admin)) {
     array_push($res->errors, "must include admin");
     $user = new PostUser();
+} else {
+    if ($admin) $user = new PostAdmin();
+    else $user = new PostUser();
 }
 
 //get post queries
 
-$getUsername = getBody("username");
+$user->username = getBody("username");
+if (is_null($user->username)) array_push($res->errors, "must include username");
 
-if ($getUsername["set"]) {
-    $username = $getUsername["value"];
-    $user->username = $username;
+$user->store_id = getBody("store_id");
+if (is_null($user->store_id)) array_push($res->errors, "must include store_id");
+else {
+    $storeExists = DB::queryFirstRow("SELECT id FROM stores WHERE id=%s LIMIT 1", $user->store_id);
+    if (!$storeExists) array_push($res->errors, "invalid store_id");
 }
-else array_push($res->errors, "must include username");
 
-$getStoreId = getBody("store_id");
-if ($getStoreId["set"]) {
-    $storeId = $getStoreId["value"];
-    $storeExists = DB::queryFirstRow("SELECT id FROM stores WHERE id=%s LIMIT 1", $storeId);
-    if ($storeExists) $user->store_id = $storeId;
-    else array_push($res->errors, "invalid store_id");
-}
-else array_push($res->errors, "must include store_id");
-
-$getPassword = getBody("password");
-if ($getPassword["set"]) {
-    $password = $getPassword["value"];
-    $user->password = $password;
-    $res->errors = array_merge($res->errors, $user->checkPassword());
-} else array_push($res->errors, "must include password");
+$user->password = getBody("password");
+if (is_null($user->password)) array_push($res->errors, "must include password");
+else $res->errors = array_merge($res->errors, $user->checkPassword());
 
 if (count($res->errors) == 0) {
     $user->createHash();
     try {
-        $result = DB::queryFirstRow("SELECT id FROM users WHERE username=%s LIMIT 1", $username);
+        $result = DB::queryFirstRow("SELECT id FROM users WHERE username=%s LIMIT 1", $user->username);
         if (!$result) {
             DB::insert('users', array(
                 'username' => $user->username,
