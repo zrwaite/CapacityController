@@ -7,10 +7,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         require __DIR__ . "/postStore.php";
         break;
     case "PUT":
-        require __DIR__ . "/putStudent.php";
+        require __DIR__ . "/putStore.php";
         break;
     case "DELETE":
-        require __DIR__ . "/deleteStudent.php";
+        require __DIR__ . "/deleteStore.php";
         break;
     default:
         echo "What Request Method is this???";

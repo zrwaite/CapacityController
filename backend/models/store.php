@@ -36,7 +36,7 @@ class PostStore
 
 class PutStore
 {
-    public array $params = ["name", "store_id", "password"];
+    public array $params = ["name", "address", "hours", "phone", "bio", "max_capacity", "num_shoppers", "actual_capacity", "public_email"];
 
     #[ArrayShape(["errors" => "array", "puts" => "array"])] //dev Array Shape reference
     public function getPutArray($email): array
@@ -49,7 +49,11 @@ class PutStore
             $param = getBody($current_param);
             if (!$param) continue; //If the parameter isn't defined continue, otherwise check the switch for special cases
             switch ($current_param) {
-                case "name": case "store_id": break;
+                case "name": case "address": case "hours": case "phone": case "bio":
+                case "max_capacity":case "num_shoppers":case "actual_capacity":break;
+                case "public_email":
+                    if (!checkEmail($param)) $error = true;
+                    break;
                 default:
                     $error = true;
                     array_push($errors, "Zac you forgot to implement put switch for $current_param");
