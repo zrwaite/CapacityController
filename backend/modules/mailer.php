@@ -8,6 +8,7 @@ use Symfony\Component\Dotenv\Dotenv;
 
 //Imports
 require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/server.php";
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__ . '/env/.env');
 //Main
@@ -46,4 +47,16 @@ function sendMail(array $emails, string $subject, string $html, string $text): b
         echo "ERROR:" . $emails[$i] . ". Mailer Error: $mail->ErrorInfo";
         return false;
     }
+}
+
+function sendEmailConfirmation($email, $confirmation_code): bool {
+    $mailHtml = "
+                <h1>Validate your email <a href=".baseurl."'/confirmEmail?email=" . $email . "'>here</a></h1> 
+                <p>Confirmation Code: " . $confirmation_code . "</p>
+            ";
+    $mailText = "
+                Validate your email here: ".baseurl."/confirmEmail?email=" . $email . "
+                Confirmation Code: " . $confirmation_code;
+    sendMail([$email], "Validate Email - Capacity Controller", $mailHtml, $mailText);
+    return true;
 }

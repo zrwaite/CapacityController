@@ -12,8 +12,9 @@ require_once __DIR__ . "/../modules/mailer.php";
 
 class PostUser
 { //Class for json response
-    public string $username, $password, $password_hash;
-    public int $store_id;
+    public array $neededParams = ["username", "password", "password", "admin"];
+    public string|null $username, $password, $password_hash, $email = null;
+    public int|null $store_id;
     public bool $admin;
 
     public function __construct()
@@ -45,6 +46,21 @@ class PostUser
         $token = createToken(new tokenBody($this->username));
         setcookie("token", $token, time() + (86400 * 30), "/");
         return $token;
+    }
+
+    public function getAttributeErrors(): array{
+        $errors = [];
+        $thisObject = get_object_vars($this);
+        foreach ($this->neededParams as $key) {
+            $value = $thisObject[$key];
+            if (is_null($value)) array_push($errors, "missing param ".$key);
+            else {
+                if ($key=="password") {
+                    $errors = array_merge($errors, $this->checkPassword());
+                }
+            }
+        }
+        return $errors;
     }
 }
 

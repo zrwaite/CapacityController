@@ -10,6 +10,7 @@ require_once __DIR__ . "/../../models/response.php";
 require_once __DIR__ . "/../../modules/database.php"; //Connect to database
 require_once __DIR__ . "/../../modules/readParams.php";
 require_once __DIR__ . "/../../models/user.php";
+require_once __DIR__ . "/../../models/admin.php";
 
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__ . "/../../modules/env/.env");
@@ -20,29 +21,22 @@ $res = new Response();
 $res->request_type = "POST";
 
 $admin = getBody("admin");
-if (is_null($admin)) {
-    array_push($res->errors, "must include admin");
-    $user = new PostUser();
+if ($admin) {
+    $user = new PostAdmin();
+    $user->email = getBody("email");
 } else {
-    if ($admin) $user = new PostAdmin();
-    else $user = new PostUser();
+    $user = new PostUser();
+    $user->store_id = getBody("store_id");
+    if (is_null($user->store_id)) array_push($res->errors, "missing param store_id");
+    else {
+        $storeExists = DB::queryFirstRow("SELECT id FROM stores WHERE id=%s LIMIT 1", $user->store_id);
+        if (!$storeExists) array_push($res->errors, "invalid store_id");
+    }
 }
-
-//get post queries
-
-$user->username = getBody("username");
-if (is_null($user->username)) array_push($res->errors, "must include username");
-
-$user->store_id = getBody("store_id");
-if (is_null($user->store_id)) array_push($res->errors, "must include store_id");
-else {
-    $storeExists = DB::queryFirstRow("SELECT id FROM stores WHERE id=%s LIMIT 1", $user->store_id);
-    if (!$storeExists) array_push($res->errors, "invalid store_id");
-}
-
 $user->password = getBody("password");
-if (is_null($user->password)) array_push($res->errors, "must include password");
-else $res->errors = array_merge($res->errors, $user->checkPassword());
+$user->username = getBody("username");
+
+$res->errors = array_merge($res->errors, $user->getAttributeErrors());
 
 if (count($res->errors) == 0) {
     $user->createHash();
@@ -53,10 +47,13 @@ if (count($res->errors) == 0) {
                 'username' => $user->username,
                 'password_hash' => $user->password_hash,
                 'store_id' => $user->store_id,
+                'admin' => $user->admin,
+                'email' => $user->email,
             ));
             $res->status = 200;
             $res->success = true;
             $res->objects = $user->createResponse();
+            if ($user->admin) $user->sendEmailConfirmation();
         } else array_push($res->errors, "username already in use");
     } catch (Exception $e) {
         array_push($res->errors, "database error");

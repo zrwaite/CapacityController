@@ -12,15 +12,25 @@ require_once __DIR__ . "/../modules/mailer.php";
 
 class PostStore
 { //Class for json response
-    public string $name;
-    public int $max_capacity, $num_shoppers, $actual_capacity;
-    public int $admin_username;
+    public array $neededParams = ["name", "admin_username", "max_capacity", "actual_capacity"];
+    public string|null $name, $public_email, $address, $hours, $phone, $bio, $admin_username;
+    public int|null $max_capacity, $actual_capacity;
+
     #[ArrayShape(["request" => "mixed", "token" => "string"])] //Dev Array shape implementation
     public function createResponse(): array
     {
         return [
             "request" => json_decode(file_get_contents('php://input'), true)
         ];
+    }
+    public function getAttributeErrors(): array{
+        $errors = [];
+        $thisObject = get_object_vars($this);
+        foreach ($this->neededParams as $key) {
+            $value = $thisObject[$key];
+            if (is_null($value)) array_push($errors, "missing param ".$key);
+        }
+        return $errors;
     }
 }
 

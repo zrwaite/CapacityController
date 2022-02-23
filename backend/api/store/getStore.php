@@ -8,7 +8,7 @@ require_once __DIR__ . "/../../vendor/autoload.php";
 require_once __DIR__ . "/../../models/response.php";
 require_once __DIR__ . "/../../modules/database.php"; //Connect to database
 require_once __DIR__ . "/../../modules/readParams.php";
-require_once __DIR__ . "/../../modules/parseResult.php";
+require_once __DIR__ . "/../../modules/parse.php";
 require_once __DIR__ . "/../../models/store.php";
 
 $dotenv = new Dotenv();

@@ -14,15 +14,16 @@ require_once __DIR__ . "/user.php";
 class PostAdmin extends PostUser
 { //Class for json response
     public int $confirmation_code;
-    public string $email;
+    public string|null $email;
 
     public function __construct()
     {
         parent::__construct();
-        $this->admin = false;
+        $this->admin = true;
+        $this->store_id = null;
         $this->createConfirmationCode();
+        array_push($this->neededParams, "email");
     }
-
     public function createConfirmationCode()
     {
         $chars = 6;
@@ -34,9 +35,30 @@ class PostAdmin extends PostUser
     {
         return checkEmail($this->email);
     }
+
+    public function getAttributeErrors(): array{
+        $errors = [];
+        $thisObject = get_object_vars($this);
+        foreach ($this->neededParams as $key) {
+            $value = $thisObject[$key];
+            if (is_null($value)) array_push($errors, "missing param ".$key);
+            else {
+                if ($key=="password") {
+                    $errors = array_merge($errors, $this->checkPassword());
+                } else if ($key=="email") {
+                    if (!$this->checkEmail()) array_push($errors, "invalid email");
+                }
+            }
+        }
+        return $errors;
+    }
+
+    public function sendEmailConfirmation() {
+        sendEmailConfirmation($this->email, $this->confirmation_code);
+    }
 }
 
-class PutUser
+class PutAdmin
 {
     public array $params = ["name", "store_id", "password"];
 
