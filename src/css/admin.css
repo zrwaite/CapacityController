@@ -1,15 +1,16 @@
-#title{
+#title {
     text-align: center;
     color: red;
 }
 #editor{
+    text-align: center;
     margin: 10px;
     padding: 10px;
     background-color: lightsteelblue;
     display: grid;
     grid-template-columns: 3fr 2fr;
 }
-#storeInfo{
+.storeInfo{
     display: grid;
     grid-template-columns: 1fr 2fr;
     border-right: 3px solid black;
@@ -25,4 +26,7 @@
     grid-template-columns: 1fr;
     width: 50%;
     text-align: center;
+}
+#adder, #editor{
+    display:none;
 }
