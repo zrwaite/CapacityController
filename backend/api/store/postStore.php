@@ -52,11 +52,14 @@ if (count($res->errors) == 0) {
             "actual_capacity" => $store->actual_capacity,
             "admin_username" => $store->admin_username
             ]));
+        $newId = DB::insertId();
+        DB::update('users', ["store_id" => $newId], "username=%s", $store->admin_username);
         $res->status = 200;
         $res->success = true;
-        $res->objects = $store->createResponse();
+        $res->objects = $store->createResponse($newId);
     } catch (Exception $e) {
-        array_push($res->errors, "database error");
+        if ($e->getCode()) array_push($res->errors, "user already has store");
+        else array_push($res->errors, "database error");
     }
 }
 http_response_code($res->status);

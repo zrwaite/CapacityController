@@ -16,11 +16,12 @@ class PostStore
     public string|null $name, $public_email, $address, $hours, $phone, $bio, $admin_username;
     public int|null $max_capacity, $actual_capacity;
 
-    #[ArrayShape(["request" => "mixed", "token" => "string"])] //Dev Array shape implementation
-    public function createResponse(): array
+    #[ArrayShape(["request" => "mixed", "id" => "int"])] //Dev Array shape implementation
+    public function createResponse($newId): array
     {
         return [
-            "request" => json_decode(file_get_contents('php://input'), true)
+            "request" => json_decode(file_get_contents('php://input'), true),
+            "id" => $newId
         ];
     }
     public function getAttributeErrors(): array{
