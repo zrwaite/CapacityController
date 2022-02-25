@@ -3,7 +3,7 @@ CREATE DATABASE capacity_controller;
 CREATE TABLE capacity_controller.stores (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name CHAR(100) NOT NULL,
-    admin_username CHAR(30) NOT NULL,
+    admin_username CHAR(30) NOT NULL UNIQUE,
 	max_capacity INT(10) NOT NULL,
 	actual_capacity INT(10) NOT NULL,
 	num_shoppers INT(10) DEFAULT 0,

@@ -14,6 +14,7 @@ const tryLogin = async () => {
         redirect("/home.html");
         setCookie("username", username);
         setCookie("token", response.objects.token);
+        setCookie("storeId", response.objects.store_id);
     } else if (response.errors.length > 0) {
         alert("Failure");
         alert(JSON.stringify(response.errors))
