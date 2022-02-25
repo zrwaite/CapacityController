@@ -16,8 +16,10 @@
 
     <script src="src/js/jquery-3.6.0.min.js"></script>
     <script>page="stores"</script>
-    <script src="src/js/getStores.js"></script>
+    <script src="src/js/stores.js"></script>
     <script src="src/js/nav.js"></script>
+    <script src="src/js/httpRequests.js"></script>
+    <script src="src/js/getInfo.js"></script>ß
   </head>
   <body>
     <nav><script type="module" src="src/html/nav.js"></script></nav>
@@ -25,7 +27,7 @@
     <header>
       <img id="headerLogo" src="files/images/logoBlack.png">
       <h2 id="title">Capacity Controller</h2>
-      <input type="text" placeholder="Search.." id="storeInput" onkeyup="filterFunction()">
+      <input type="text" placeholder="Search.." id="storeInput" onkeyup="searchStores()">
     </header>
     <article>
       <div id="storeList">
@@ -33,5 +35,6 @@
       <p>If you don't have our database information, then nothing will show up here, sorry. Screenshots are in readme.</p>
     </article>
     <footer><script type="module" src="src/html/footer.js"></script></footer>
+  <script>loadStores()</script>
   </body>
 </html>

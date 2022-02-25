@@ -21,6 +21,7 @@ $res->request_type = "GET";
 $id = getQuery("id");
 $page = getQuery("page");
 $owner = getQuery("owner");
+$name = getQuery("name");
 $query = "id, name, public_email, image_link, address, hours, phone, max_capacity, num_shoppers, actual_capacity, bio";
 if (!is_null($id) || !is_null($owner)) {
     if (!is_null($id)){
@@ -49,6 +50,20 @@ if (!is_null($id) || !is_null($owner)) {
     } else {
         $res->status = 404;
         array_push($res->errors, "store page ".$page." not found");
+    }
+} else if (!is_null($name)) {
+    $result = DB::query("SELECT " . $query . " FROM stores WHERE name LIKE '%".$name."%'");
+    if ($result) {
+        $res->objects = [];
+        foreach ($result as $element) {
+            array_push($res->objects, getParseResult($element, "store"));
+        }
+        $res->status = 200;
+        $res->success = true;
+    } else {
+        $res->status = 404;
+        $res->objects = [];
+        $res->success = true;
     }
 } else array_push($res->errors, "Missing id, owner or page query, or did you mean for a non-GET request?");
 
