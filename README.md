@@ -1,5 +1,6 @@
-# DefHacks3: CapacityController
+# CapacityController: Def Hacks 3 Covid Hackathon Winner 🎉
 This is our code repository for our project submission for Def Hacks Worldwide 3.0
+Updated February 2022 because I was bored and thought I would finish up the backend/integration of the project.
 
 ## Team Members:
 * Zac: Software Engineer and Leader
