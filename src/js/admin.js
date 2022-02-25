@@ -2,15 +2,13 @@ const loadAdminPage = async() => {
     if (await getUser()){
         let storeId = getCookie("storeId")
         if (storeId && storeId.toString()!=="0") {
-            let json = await httpReq("/api/store/?id="+storeId, "GET", )
-            let response = JSON.parse(json);
-            if (response.success && response.objects) {
-                console.log(response.objects);
-                loadUsers(storeId);
-            } else if (response.errors.length > 0) {
-                alert("Failure");
-                alert(JSON.stringify(response.errors))
-            }
+            let store = await getStore();
+            document.getElementById("bname").value = store.name;
+            document.getElementById("phone").value = store.phone;
+            document.getElementById("hours").value = store.hours;
+            document.getElementById("address").value = store.address;
+            document.getElementById("maxCap").value = store.max_capacity;
+            document.getElementById("currCap").value = store.actual_capacity;
             document.getElementById("editor").style.display = "grid";
             document.getElementById("adder").style.display = "none";
             // return false;
@@ -44,24 +42,42 @@ const loadUsers = async(storeId) => {
     }
 }
 
-/*
-<label for='new_bname'>Business Name *:</label>
-          <input type='text' id='new_bname' name='new_bname' maxlength='80'>
-          <label for='new_maxCap'>Maximum Capacity* :</label>
-          <input type='number' id='new_maxCap' name='new_maxCap'>
-          <label for='new_currCap'>Covid Capacity* :</label>
-          <input type='number' id='new_currCap' name='new_currCap'>
-          <label for='new_phone'>Phone Number:</label>
-          <input type='text' id='new_phone' name='new_phone' maxlength='20'>
-          <label for='new_email'>Public Email:</label>
-          <input type='text' id='new_email' name='new_email' maxlength='20'>
-          <label for='new_hours'>Hours:</label>
-          <input type='text' id='new_hours' name='new_hours' maxlength='200'>
-          <label for='new_bio'>Bio:</label>
-          <input type='text' id='new_bio' name='new_bio' maxlength='200'>
-          <label for='new_address'>Address:</label>
-          <input type='text' id='new_address' name='new_address' maxlength='80'>
- */
+const tryUpdateStore = async () => {
+    let bname = document.getElementById("bname").value
+    let phone = document.getElementById("phone").value
+    let hours = document.getElementById("hours").value
+    let address = document.getElementById("address").value
+    let maxCap = document.getElementById("maxCap").value
+    let currCap = document.getElementById("currCap").value
+    let storeId = getCookie("storeId");
+    if (!maxCap) {
+        alert("maximum capacity needed");
+        return false;
+    }
+    if (!currCap) {
+        alert("covid capacity needed");
+        return false
+    }
+    if (!storeId) {
+        return false;
+    }
+    let json = await httpReq("/api/store/", "PUT", {
+        "id": storeId,
+        "name": bname,
+        "max_capacity": maxCap,
+        "actual_capacity": currCap,
+        "hours": hours,
+        "address": address,
+        "phone": phone
+    })
+    let response = JSON.parse(json);
+    if (response.success && response.objects) {
+        alert("updated");
+    } else if (response.errors.length > 0) {
+        alert("Failure");
+        alert(JSON.stringify(response.errors))
+    }
+}
 
 const tryCreateStore = async () => {
     let bnameInput = document.getElementById("new_bname");
